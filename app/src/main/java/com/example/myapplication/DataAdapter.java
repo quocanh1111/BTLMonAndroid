@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
@@ -19,7 +20,7 @@ import java.util.List;
 import java.util.ArrayList;
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private List<Task> tasks;
-    Task curTask;
+    public Task curTask;
 
     public DataAdapter(List<Task> tasks) {
         this.tasks = tasks;
@@ -38,6 +39,13 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         curTask = task;
         holder.bind(task);
     }
+    public void removeItem(int position) {
+        if (position >= 0 && position < tasks.size()) {
+            tasks.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, tasks.size());
+        }
+    }
 
     @Override
     public int getItemCount() {
@@ -48,18 +56,22 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         private TextView nameTextView;
         private Button detailsButton;
         private Dialog dialog;
+        private Button deleteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            nameTextView = itemView.findViewById(R.id.nameTextView);
-            detailsButton = itemView.findViewById(R.id.detailsButton);
             dialog = new Dialog(itemView.getContext());
             dialog.setContentView(R.layout.detail_dialog);
+            nameTextView = itemView.findViewById(R.id.nameTextView);
+            detailsButton = itemView.findViewById(R.id.detailsButton);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
+
 
             // Find views in the dialog layout
             TextView descriptionTextView = dialog.findViewById(R.id.descriptionTextView);
             TextView timeTextView = dialog.findViewById(R.id.timeTextView);
             Button editButton = dialog.findViewById(R.id.editButton);
+
 
             detailsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,17 +82,24 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
                     editButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Task editedTask = tasks.get(getAdapterPosition());
-                            // Modify the editedTask with the updated values
-
-                            // Save the edited task to the Room database
-                            UserDAO taskDao = TaskDatabase.connectDB(itemView.getContext()).userDao();
-                            taskDao.updateTask(editedTask);
-
+                            Intent intent = new Intent(itemView.getContext(), TaskEdit.class);
+                            intent.putExtra("Task",curTask);
+                            itemView.getContext().startActivity(intent);
                             dialog.dismiss();
                         }
                     });
                     dialog.show();
+                }
+            });
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    UserDAO taskDao = TaskDatabase.connectDB(itemView.getContext()).userDao();
+                    taskDao.deleteTask(curTask);
+                    int position = getBindingAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        removeItem(position);
+                    }
                 }
             });
         }

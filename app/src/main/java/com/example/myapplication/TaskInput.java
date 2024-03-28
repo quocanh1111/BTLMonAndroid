@@ -16,13 +16,14 @@ import com.example.myapplication.database.TaskDatabase;
 import java.util.Calendar;
 import java.util.ArrayList;
 public class TaskInput extends AppCompatActivity{
-    EditText name;
-    TaskDatabase DB;
-    EditText description;
-    Button btn;
-    int inputDay;
-    int inputMonth;
-    int inputYear;
+    private EditText name;
+    private TaskDatabase DB;
+    private EditText description;
+    private Button btn;
+    private CalendarView inTime;
+    private int inputDay;
+    private int inputMonth;
+    private int inputYear;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +31,16 @@ public class TaskInput extends AppCompatActivity{
         name = findViewById(R.id.taskName);
         description = findViewById(R.id.taskDescription);
         btn = findViewById(R.id.button2);
-        Intent intent = getIntent();
-        Bundle b = intent.getExtras();
-        if(b!=null){
-            inputDay = (int) b.get("day");
-            inputMonth = (int) b.get("month");
-            inputYear = (int) b.get("year");
-        }
+        inTime = findViewById(R.id.inputTime);
+        inTime.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                inputDay = dayOfMonth;
+                inputMonth = month;
+                inputYear = year;
+
+            }
+        });
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,8 +56,6 @@ public class TaskInput extends AppCompatActivity{
                     Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG);
                     name.setText("");
                     description.setText("");
-                    Intent intent = new Intent(TaskInput.this, MainActivity.class);
-                    startActivity(intent);
                 }
             }
         });

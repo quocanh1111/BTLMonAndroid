@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/taskName"
+        android:id="@+id/taskEditName"
         android:layout_width="263dp"
         android:layout_height="80dp"
         android:layout_marginTop="63dp"
@@ -14,13 +14,13 @@
         android:ems="10"
         android:hint="Nhap ten"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/taskDescription"
+        app:layout_constraintBottom_toTopOf="@+id/taskEditDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/taskDescription"
+        android:id="@+id/taskEditDescription"
         android:layout_width="267dp"
         android:layout_height="66dp"
         android:layout_marginStart="70dp"
@@ -35,11 +35,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskName" />
+        app:layout_constraintTop_toBottomOf="@+id/taskEditName" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView2"
-        android:layout_width="411dp"
+        android:layout_width="409dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
         android:layout_marginBottom="3dp"
@@ -47,29 +47,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputTime" />
+        app:layout_constraintTop_toBottomOf="@+id/changeTimeOrNot" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="102dp"
+        android:id="@+id/Edit"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="564dp"
-        android:layout_marginEnd="16dp"
-        android:text="Button"
+        android:layout_marginEnd="28dp"
+        android:text="Cap nhat"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/changeTimeOrNot"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <CalendarView
-        android:id="@+id/inputTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="218dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="90dp"
+        android:id="@+id/editTime"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="248dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="96dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/changeTimeOrNot"
+        android:layout_width="109dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="573dp"
+        android:layout_marginEnd="151dp"
+        android:layout_marginBottom="30dp"
+        android:text="Change time ?"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
+        app:layout_constraintEnd_toStartOf="@+id/Edit"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

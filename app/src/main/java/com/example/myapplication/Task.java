@@ -4,12 +4,14 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.room.*;
 import androidx.lifecycle.LiveData;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
 
 @Entity(tableName = "Task")
-public class Task {
+public class Task implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "taskID")
