@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DB = TaskDatabase.connectDB(this);
+        data = TaskDatabase.connectDB(this).userDao().getAllTasks();
+
         calendar = findViewById(R.id.calendar);
         t = findViewById(R.id.info);
         c = Calendar.getInstance();
@@ -43,22 +44,21 @@ public class MainActivity extends AppCompatActivity {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                selectedDay = dayOfMonth;
-                selectedMonth = month;
-                selectedYear = year;
+                Task t = new Task();
+                t = findTask(dayOfMonth,month,year);
 
             }
         });
+
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TaskInput.class);
-                intent.putExtra("day",selectedDay);
-                intent.putExtra("month",selectedMonth);
-                intent.putExtra("year",selectedYear);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
             }
         });
+
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,5 +73,21 @@ public class MainActivity extends AppCompatActivity {
 
         super.onDestroy();
         DB.close();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Set the intent flag to prevent creating a new instance of Activity 1
+        Intent intent = getIntent();
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        setIntent(intent);
+    }
+    public Task findTask(int day,int month,int year){
+        for(Task t:data){
+            if(t.getTaskDate()==day && t.getTaskMonth() == month && t.getTaskYear() == year){
+                return t;
+            }
+        }
+        return new Task();
     }
 }

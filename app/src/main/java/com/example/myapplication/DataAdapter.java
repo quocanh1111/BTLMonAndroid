@@ -26,6 +26,10 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         this.tasks = tasks;
     }
 
+    public void setTasks(List<Task> new_tasks) {
+        this.tasks = new_tasks;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -60,14 +64,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
+
             dialog = new Dialog(itemView.getContext());
             dialog.setContentView(R.layout.detail_dialog);
             nameTextView = itemView.findViewById(R.id.nameTextView);
             detailsButton = itemView.findViewById(R.id.detailsButton);
             deleteButton = itemView.findViewById(R.id.deleteButton);
-
-
-            // Find views in the dialog layout
             TextView descriptionTextView = dialog.findViewById(R.id.descriptionTextView);
             TextView timeTextView = dialog.findViewById(R.id.timeTextView);
             Button editButton = dialog.findViewById(R.id.editButton);
@@ -99,6 +101,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
                     int position = getBindingAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
                         removeItem(position);
+
                     }
                 }
             });

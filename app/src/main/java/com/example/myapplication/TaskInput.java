@@ -36,7 +36,7 @@ public class TaskInput extends AppCompatActivity{
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 inputDay = dayOfMonth;
-                inputMonth = month;
+                inputMonth = month+1;
                 inputYear = year;
 
             }
@@ -56,6 +56,7 @@ public class TaskInput extends AppCompatActivity{
                     Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG);
                     name.setText("");
                     description.setText("");
+                    finish();
                 }
             }
         });

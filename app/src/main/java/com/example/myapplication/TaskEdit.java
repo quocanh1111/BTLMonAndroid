@@ -49,7 +49,7 @@ public class TaskEdit extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 editedDay = dayOfMonth;
-                editedMonth = month;
+                editedMonth = month+1;
                 editedYear = year;
             }
         });
@@ -74,8 +74,7 @@ public class TaskEdit extends AppCompatActivity {
                     newTask.setTaskDescription(editedDescription.getText().toString());
                 }
                 TaskDatabase.connectDB(TaskEdit.this).userDao().updateTask(newTask);
-                Intent intent1 = new Intent(TaskEdit.this,TaskList.class);
-                startActivity(intent1);
+                finish();
             }
         });
 
@@ -86,5 +85,4 @@ public class TaskEdit extends AppCompatActivity {
         }
         return false;
     }
-
 }
