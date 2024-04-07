@@ -17,6 +17,9 @@ public class Task implements Serializable {
     @ColumnInfo(name = "taskID")
     private int taskID;
     @NonNull
+    @ColumnInfo(name = "userID")
+    private int UID;
+    @NonNull
     @ColumnInfo(name = "taskName")
     private String taskName;
     @ColumnInfo(name = "taskDescription")
@@ -98,6 +101,16 @@ public class Task implements Serializable {
     public void setTaskMonth(int taskMonth) {
         this.taskMonth = taskMonth;
     }
+
+    @NonNull
+    public int getUID() {
+        return UID;
+    }
+
+    public void setUID(@NonNull int UID) {
+        this.UID = UID;
+    }
+
     public String getTimeByFormat(){
         String s = String.valueOf(taskDate) + "/" + String.valueOf(taskMonth) + "/" + String.valueOf(taskYear);
         return s;
