@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <LinearLayout
+
+        android:id="@+id/InKhungDangKy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:textAlignment="center"
+        android:background="@color/black"
+        >
+
+        <TextView
+            android:id="@+id/DangKy"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:text="@string/dangky"
+            android:textSize="@dimen/size25dp"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            />
+
+
+
+        <EditText
+            android:id="@+id/newusername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="@string/tendangnhap"
+            android:textColorHint="@color/gray"
+            android:padding="@dimen/size25dp"
+            android:layout_margin="@dimen/size25dp"
+
+            tools:ignore="Deprecated">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/newpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="@string/nhapmatkhau"
+            android:textColorHint="@color/gray"
+            android:padding="@dimen/size25dp"
+            android:layout_margin="@dimen/size25dp"
+            android:inputType="textPassword"
+            tools:ignore="Deprecated">
+
+
+        </EditText
+            >
+
+
+        <EditText
+            android:id="@+id/pass_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="Nhap lai mat khau"
+            android:textColorHint="@color/gray"
+            android:inputType="textPassword"
+            android:padding="@dimen/size25dp"
+            android:layout_margin="@dimen/size25dp"
+            >
+        </EditText>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        >
+            <Button
+                android:id="@+id/confirm_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/agree"
+                android:layout_weight="1">
+            </Button>
+            <Button
+                android:id="@+id/esc_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/exit"
+                android:layout_weight="1">
+            </Button>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

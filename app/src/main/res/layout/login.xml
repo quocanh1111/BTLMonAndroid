@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+
+        android:id="@+id/InKhungDangKy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="162dp">
+
+        <TextView
+            android:id="@+id/DangKy"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:text="@string/dangnhap"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size25dp" />
+
+
+        <EditText
+            android:id="@+id/nhapTK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size25dp"
+            android:background="@color/white"
+            android:hint="@string/tendangnhap"
+            android:padding="@dimen/size25dp"
+            android:textColorHint="@color/gray"
+
+            tools:ignore="Deprecated">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/nhapMatKhau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size25dp"
+            android:background="@color/white"
+            android:hint="@string/nhapmatkhau"
+            android:padding="@dimen/size25dp"
+            android:password="true"
+            android:textColorHint="@color/gray"
+            tools:ignore="Deprecated">
+
+
+        </EditText>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/cp_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/agree"></Button>
+
+            <Button
+                android:id="@+id/esc_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/exit"></Button>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
