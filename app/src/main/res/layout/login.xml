@@ -75,5 +75,12 @@
                 android:text="@string/exit"></Button>
         </LinearLayout>
 
+        <Button
+            android:id="@+id/DangKyTK"
+            android:layout_width="203dp"
+            android:layout_height="wrap_content"
+
+            android:text="Dang ky tai khoan" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

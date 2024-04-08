@@ -12,6 +12,7 @@ import android.widget.CalendarView;
 import android.widget.*;
 
 import com.example.myapplication.database.TaskDatabase;
+import com.example.myapplication.database.UserDatabase;
 
 import java.util.Calendar;
 import java.util.ArrayList;
@@ -55,6 +56,10 @@ public class SignInActivity extends AppCompatActivity{
         }
         if(confirmNewPass.getText().toString().equals(newPass.getText().toString())){
             confirmNewPass.setError("Phai trung voi mat khau duoc nhap");
+        }
+        else{
+            User new_user = new User(newUsername.getText().toString(),newPass.getText().toString());
+            UserDatabase.connectDB(SignInActivity.this).userDao().insertUser(new_user);
         }
     }
 

@@ -22,4 +22,6 @@ public interface UserDAO {
 
     @Query("SELECT * FROM Task ORDER BY taskID ASC")
     List<Task> getAllTasks();
+
+
 }

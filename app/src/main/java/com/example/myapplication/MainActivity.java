@@ -1,5 +1,9 @@
 package com.example.myapplication;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,16 +23,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    CalendarView calendar;
-    TaskDatabase DB;
-    Calendar c;
-    TextView t;
-    Button bt;
-    Button bt2;
-    int selectedDay;
-    int selectedMonth;
-    int selectedYear;
-    List<Task> data;
+    private CalendarView calendar;
+    private TaskDatabase DB1;
+    private TextView t;
+    private Button bt;
+    private Button bt2;
+    private Button bt3;
+    private List<Task> data;
+    private User curUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +40,17 @@ public class MainActivity extends AppCompatActivity {
 
         calendar = findViewById(R.id.calendar);
         t = findViewById(R.id.info);
-        c = Calendar.getInstance();
         bt = findViewById(R.id.button);
         bt2 = findViewById(R.id.button3);
+        bt3 = findViewById(R.id.button4);
+        Intent dataReceiver = getIntent();
+        if(dataReceiver != null){
+            curUser = (User) dataReceiver.getSerializableExtra("Task");
+        }
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                Task t = new Task();
-                t = findTask(dayOfMonth,month,year);
+
 
             }
         });
@@ -55,7 +60,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TaskInput.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                intent.putExtra("User",curUser);
                 startActivity(intent);
+            }
+        });
+        bt3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,LogInActivity.class);
+                startActivity(i);
+
             }
         });
 
@@ -63,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,TaskList.class);
+                intent.putExtra("User",curUser);
                 startActivity(intent);
             }
         });
@@ -72,13 +87,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy(){
 
         super.onDestroy();
-        DB.close();
+        DB1.close();
     }
     @Override
     protected void onResume() {
         super.onResume();
         // Set the intent flag to prevent creating a new instance of Activity 1
         Intent intent = getIntent();
+        curUser = (User) intent.getSerializableExtra("User");
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         setIntent(intent);
     }

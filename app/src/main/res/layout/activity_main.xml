@@ -8,11 +8,11 @@
 
     <CalendarView
         android:id="@+id/calendar"
-        android:layout_width="409dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="231dp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        android:layout_width="396dp"
+        android:layout_height="345dp"
+        android:layout_marginBottom="240dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,8 +36,8 @@
         android:id="@+id/info"
         android:layout_width="278dp"
         android:layout_height="115dp"
-        android:layout_marginTop="380dp"
-        android:text="Khong co nhiem vu nao trong ngay.Nhan 'them' de them nhiem vu "
+        android:layout_marginTop="396dp"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,28 +45,45 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="82dp"
+        android:layout_width="93dp"
+        android:layout_height="79dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="66dp"
         android:text="Them"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/button3"
         app:layout_constraintTop_toBottomOf="@+id/calendar"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="94dp"
-        android:layout_height="83dp"
+        android:layout_width="99dp"
+        android:layout_height="77dp"
         android:layout_marginStart="1dp"
-        android:layout_marginEnd="205dp"
+        android:layout_marginEnd="63dp"
         android:layout_marginBottom="71dp"
-        android:text="List"
+        android:text="Danh sach"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendar" />
+        app:layout_constraintTop_toBottomOf="@+id/calendar"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="122dp"
+        android:layout_height="69dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="96dp"
+        android:text="Dang nhap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/calendar"
+        app:layout_constraintVertical_bias="1.0" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
