@@ -20,14 +20,19 @@ public class TaskList extends AppCompatActivity {
     private DataAdapter adapter;
     private RecyclerView data;
     private Button addBTN;
+    private User curUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
         data = findViewById(R.id.dataList);
         addBTN = findViewById(R.id.add_btn_2);
+        Intent i = getIntent();
+        if(i != null){
+            curUser = (User) i.getSerializableExtra("Task");
+        }
         tableData = new ArrayList<Task>();
-        tableData = TaskDatabase.connectDB(TaskList.this).userDao().getAllTasks();
+        tableData = TaskDatabase.connectDB(TaskList.this).userDao().getAllUserTasks(curUser.getUID());
         adapter = new DataAdapter(tableData);
         data.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

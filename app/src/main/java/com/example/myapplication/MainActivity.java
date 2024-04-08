@@ -36,13 +36,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        data = TaskDatabase.connectDB(this).userDao().getAllTasks();
+        data = TaskDatabase.connectDB(this).userDao().getAllUserTasks(curUser.getUID());
 
         calendar = findViewById(R.id.calendar);
         t = findViewById(R.id.info);
         bt = findViewById(R.id.button);
         bt2 = findViewById(R.id.button3);
         bt3 = findViewById(R.id.button4);
+        String chao = "Hello: "+curUser.getUSERNAME();
+        t.setText(chao);
         Intent dataReceiver = getIntent();
         if(dataReceiver != null){
             curUser = (User) dataReceiver.getSerializableExtra("Task");
@@ -50,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-
 
             }
         });
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         curUser = (User) intent.getSerializableExtra("User");
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         setIntent(intent);
+
     }
     public Task findTask(int day,int month,int year){
         for(Task t:data){

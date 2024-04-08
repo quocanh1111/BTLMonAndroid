@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 import java.io.Serializable;
 import java.util.List;
 @Entity(tableName = "Users",indices = {@Index(value = "USERNAME", unique = true)})
-public class User implements Serializable{
+public class User implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "UID")
@@ -18,17 +18,16 @@ public class User implements Serializable{
     @ColumnInfo(name = "PASSWORD")
     private String PASSWORD;
 
-    public User(@NonNull String USERNAME, @NonNull String PASSWORD ) {
+    public User(String USERNAME ,String PASSWORD) {
         this.USERNAME = USERNAME;
         this.PASSWORD = PASSWORD;
     }
 
-    @NonNull
     public String getPASSWORD() {
         return PASSWORD;
     }
 
-    public void setPASSWORD(@NonNull String PASSWORD) {
+    public void setPASSWORD(String PASSWORD) {
         this.PASSWORD = PASSWORD;
     }
 
@@ -40,12 +39,11 @@ public class User implements Serializable{
         this.UID = UID;
     }
 
-    @NonNull
     public String getUSERNAME() {
         return USERNAME;
     }
 
-    public void setUSERNAME(@NonNull String USERNAME) {
+    public void setUSERNAME(String USERNAME) {
         this.USERNAME = USERNAME;
     }
 }

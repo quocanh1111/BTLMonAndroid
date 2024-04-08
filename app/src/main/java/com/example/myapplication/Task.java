@@ -35,7 +35,8 @@ public class Task implements Serializable {
     public Task(){
 
     }
-    public Task(String taskName,String taskDescription, int day,int month,int year){
+    public Task(String taskName,String taskDescription, int day,int month,int year,int UID){
+        this.UID = UID;
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         isFinished = false;

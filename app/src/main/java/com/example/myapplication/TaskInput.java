@@ -24,6 +24,7 @@ public class TaskInput extends AppCompatActivity{
     private int inputDay;
     private int inputMonth;
     private int inputYear;
+    private User curUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,11 @@ public class TaskInput extends AppCompatActivity{
         description = findViewById(R.id.taskDescription);
         btn = findViewById(R.id.button2);
         inTime = findViewById(R.id.inputTime);
+        Intent intent = getIntent();
+        if(intent != null){
+            curUser = (User) intent.getSerializableExtra("User");
+        }
+
         inTime.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -51,7 +57,7 @@ public class TaskInput extends AppCompatActivity{
                     description.setError("This field cant be empty!");
                 }
                 else{
-                    Task t = new Task(getInputString(name),getInputString(description),inputDay,inputMonth,inputYear);
+                    Task t = new Task(getInputString(name),getInputString(description),inputDay,inputMonth,inputYear,curUser.getUID());
                     TaskDatabase.connectDB(TaskInput.this).userDao().insertTask(t);
                     Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG);
                     name.setText("");

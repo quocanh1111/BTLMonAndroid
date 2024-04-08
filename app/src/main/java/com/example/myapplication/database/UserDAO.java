@@ -22,6 +22,6 @@ public interface UserDAO {
 
     @Query("SELECT * FROM Task ORDER BY taskID ASC")
     List<Task> getAllTasks();
-
-
+    @Query("SELECT * FROM Task WHERE userID =:id")
+    List<Task> getAllUserTasks(int id);
 }
