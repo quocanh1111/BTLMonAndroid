@@ -36,18 +36,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        data = TaskDatabase.connectDB(this).userDao().getAllUserTasks(curUser.getUID());
+
 
         calendar = findViewById(R.id.calendar);
         t = findViewById(R.id.info);
         bt = findViewById(R.id.button);
         bt2 = findViewById(R.id.button3);
         bt3 = findViewById(R.id.button4);
-        String chao = "Hello: "+curUser.getUSERNAME();
-        t.setText(chao);
         Intent dataReceiver = getIntent();
         if(dataReceiver != null){
             curUser = (User) dataReceiver.getSerializableExtra("Task");
+        }
+        if(curUser!=null){
+            data = TaskDatabase.connectDB(this).userDao().getAllUserTasks(curUser.getUID());
+            String chao = "Hello: "+curUser.getUSERNAME();
+            t.setText(chao);
         }
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override

@@ -50,16 +50,24 @@ public class SignInActivity extends AppCompatActivity{
     public void validateInput(){     //Ham nay de kiem tra input
         if(newUsername.getText().toString().equals("")){
             newUsername.setError("Khong duoc bo trong");
+            return;
         }
         if(newPass.getText().toString().equals("")){
             newPass.setError("Khong duoc bo trong");
+            return;
         }
         if(confirmNewPass.getText().toString().equals(newPass.getText().toString())){
             confirmNewPass.setError("Phai trung voi mat khau duoc nhap");
         }
         else{
-            User new_user = new User(newUsername.getText().toString(),newPass.getText().toString());
-            UserDatabase.connectDB(SignInActivity.this).userDao().insertUser(new_user);
+            User existed_user = UserDatabase.connectDB(SignInActivity.this).userDao().getUsersByName(newUsername.getText().toString());
+            if(existed_user == null){
+                User new_user = new User(newUsername.getText().toString(),newPass.getText().toString());
+                UserDatabase.connectDB(SignInActivity.this).userDao().insertUser(new_user);
+            }
+            else{
+                newUsername.setError("Nguoi dung da ton tai! Vui long nhap ten khac");
+            }
         }
     }
 

@@ -10,4 +10,11 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_task_list">task_list_activity</string>
+    <string name="tendangnhap">Tên đăng nhập</string>
+    <string name="nhapmatkhau">Nhập mật khẩu</string>
+    <string name="date">Ngày sinh</string>
+    <string name="agree">Đồng ý</string>
+    <string name="exit">Thoát</string>
+    <string name="dangky">Đăng Ký</string>
+    <string name="dangnhap">Đăng Nhập</string>
 </resources>

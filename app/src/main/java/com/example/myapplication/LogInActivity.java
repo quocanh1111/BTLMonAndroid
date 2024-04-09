@@ -18,8 +18,6 @@ public class LogInActivity extends AppCompatActivity{
     private EditText curPass;
     private Button confirm;
     private Button escBtn;
-    private String name;
-    private String pass;
     private Button signUpBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState){   //Ham nay no de khoi tao cai activity
@@ -30,13 +28,10 @@ public class LogInActivity extends AppCompatActivity{
         confirm = findViewById(R.id.cp_btn);
         escBtn = findViewById(R.id.esc_button);
         signUpBtn = findViewById(R.id.DangKyTK);
-        name = curUsername.getText().toString();
-        pass = curPass.getText().toString();
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validateInput();
-                finish();
             }
         });
         escBtn.setOnClickListener(new View.OnClickListener() {
@@ -55,16 +50,22 @@ public class LogInActivity extends AppCompatActivity{
 
     }
     public void validateInput(){     //Ham nay de kiem tra input
-        if(name.equals("")){
+        if(getName().equals("")){
             curUsername.setError("Khong duoc bo trong");
+            return;
         }
-        if(pass.equals("")) {
+        if(getPass().equals("")) {
             curPass.setError("Khong duoc bo trong");
+            return;
         }
         else{
             User log_in_user;
-            log_in_user = UserDatabase.connectDB(LogInActivity.this).userDao().getUsersByName(name);
-            if(!log_in_user.getPASSWORD().equals(pass)){
+            User new_user = new User(getName(),getPass());
+            log_in_user = UserDatabase.connectDB(LogInActivity.this).userDao().getUsersByName(getName());
+            if(log_in_user==null){
+                curUsername.setError("Nguoi dung khong ton tai!Vui long dang ky");
+            }
+            else if(!new_user.equals(log_in_user)){
                 curPass.setError("Sai mat khau, vui long nhap lai");
             }
             else{
@@ -74,6 +75,12 @@ public class LogInActivity extends AppCompatActivity{
                 finish();
             }
         }
+    }
+    public String getName(){
+        return curUsername.getText().toString();
+    }
+    public String getPass(){
+        return curPass.getText().toString();
     }
 
 }
