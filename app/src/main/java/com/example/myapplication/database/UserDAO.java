@@ -20,8 +20,8 @@ public interface UserDAO {
     @Delete
     void deleteTask(Task task);
 
-    @Query("SELECT * FROM Task ORDER BY taskID ASC")
+    @Query("SELECT * FROM TaskTable ORDER BY taskID ASC")
     List<Task> getAllTasks();
-    @Query("SELECT * FROM Task WHERE userID =:id")
+    @Query("SELECT * FROM TaskTable WHERE userID =:id")
     List<Task> getAllUserTasks(int id);
 }

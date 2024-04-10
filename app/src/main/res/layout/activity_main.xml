@@ -6,31 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <CalendarView
         android:id="@+id/calendar"
         android:layout_width="396dp"
-        android:layout_height="345dp"
-        android:layout_marginBottom="240dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="363dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="413dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="1dp"
+        android:id="@+id/bottomNavView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendar"
+        app:layout_constraintTop_toBottomOf="@+id/info"
         app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_nav_menu" />
 
-        >
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <TextView
         android:id="@+id/info"
@@ -45,45 +44,14 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="93dp"
-        android:layout_height="79dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="66dp"
+        android:layout_width="94dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="308dp"
+        android:layout_marginBottom="104dp"
         android:text="Them"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/calendar"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="99dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="63dp"
-        android:layout_marginBottom="71dp"
-        android:text="Danh sach"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="122dp"
-        android:layout_height="69dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="96dp"
-        android:text="Dang nhap"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/calendar"
-        app:layout_constraintVertical_bias="1.0" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

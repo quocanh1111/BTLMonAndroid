@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 
-@Entity(tableName = "Task")
+@Entity(tableName = "TaskTable")
 public class Task implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @NonNull

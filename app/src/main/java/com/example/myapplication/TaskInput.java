@@ -57,7 +57,7 @@ public class TaskInput extends AppCompatActivity{
                     description.setError("This field cant be empty!");
                 }
                 else{
-                    Task t = new Task(getInputString(name),getInputString(description),inputDay,inputMonth,inputYear,curUser.getUID());
+                    Task t = new Task(getInputString(name),getInputString(description),inputDay,inputMonth,inputYear,0);
                     TaskDatabase.connectDB(TaskInput.this).userDao().insertTask(t);
                     Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG);
                     name.setText("");
